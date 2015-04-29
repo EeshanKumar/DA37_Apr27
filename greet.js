@@ -2,11 +2,10 @@
 
 module.exports = greet;
 
-function greet(name) {
+function greet(nameArg) {
+  var name = nameArg || process.argv[2];
   return 'hello ' + name;
-};
+}
 
 //If run from command line, greet user
-if (process.argv[2]) {
-  console.log(greet(process.argv[2]));
-}
+console.log(greet());
