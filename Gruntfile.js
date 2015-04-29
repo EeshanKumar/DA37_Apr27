@@ -1,24 +1,26 @@
 'use strict';
 
 module.exports = function(grunt) {
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-simple-mocha');
 
   grunt.initConfig({
+    watch: {
+      scripts: {
+        files: ['**/*.js'],
+        tasks: ['default'],
+        options: {
+          spawn: false,
+        }
+      }
+    },
     jshint: {
       dev: {
         src: ['Gruntfile.js', 'greet*.js', 'test/**/*.js']
       },
       options: {
-        node: true,
-        globals: {
-          describe: true,
-          it: true,
-          before: true,
-          after: true,
-          beforeEach: true,
-          afterEach: true
-        }
+        jshintrc: true
       }
     },
     simplemocha: {
